@@ -1,4 +1,4 @@
-*
+
 % =========================================================
 % 4.3 - Channel Vocoder
 % Download chanvocoder.m from:

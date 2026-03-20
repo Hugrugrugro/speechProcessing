@@ -3,7 +3,7 @@
 % 4.2 - Speech Analysis
 % =========================================================
 
-[signal, Fs] = audioread('modulator22.wav');
+[signal, Fs] = audioread('carrier22.wav');
 
 % If stereo, take first channel only
 if size(signal, 2) > 1
@@ -15,7 +15,7 @@ end
 % Effect: signal plays at half speed / half pitch
 % ---------------------------------------------------------
 Fs_half = round(Fs / 2);
-audiowrite('modulator22_halfFs.wav', signal, Fs_half);
+audiowrite('carrier22_halfFs.wav', signal, Fs_half);
 
 % Q: Halving Fs while keeping samples unchanged makes the player interpret
 %    the signal as slower -> audio plays at half speed and half pitch.
@@ -185,11 +185,11 @@ Fs_ds     = Fs / M;
 
 % Method 1: downsample() - no anti-aliasing filter
 y_ds  = downsample(signal, M);
-audiowrite('modulator22_downsampled_downsample.wav', y_ds, round(Fs_ds));
+audiowrite('carrier22_downsampled_downsample.wav', y_ds, round(Fs_ds));
 
 % Method 2: decimate() - low-pass filters before decimation
 y_dec = decimate(signal, M);
-audiowrite('modulator22_downsampled_decimate.wav', y_dec, round(Fs_ds));
+audiowrite('carrier22_downsampled_decimate.wav', y_dec, round(Fs_ds));
 
 figure;
 subplot(3,1,1); plot((0:length(signal)-1)/Fs,   signal); title('Original');     xlabel('Time (s)'); ylabel('Amplitude');
